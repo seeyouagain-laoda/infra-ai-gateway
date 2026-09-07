@@ -1,0 +1,25 @@
+{
+  "name": "antigravity-cn-pack-skill",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Unofficial Chinese localization pack and Codex/Claude skill for Google Antigravity.",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "apply": "node scripts/apply_antigravity_cn.js",
+    "verify": "node scripts/verify_antigravity_cn.js",
+    "rollback": "node scripts/rollback_antigravity_cn.js",
+    "check": "node --check scripts/apply_antigravity_cn.js && node --check scripts/patch_unpacked_antigravity_cn.js && node --check scripts/verify_antigravity_cn.js && node --check scripts/rollback_antigravity_cn.js && node -e \"JSON.parse(require('fs').readFileSync('scripts/translations.json','utf8')); console.log('translations OK')\""
+  },
+  "keywords": [
+    "antigravity",
+    "google-antigravity",
+    "chinese-localization",
+    "zh-cn",
+    "i18n",
+    "electron",
+    "asar",
+    "codex-skill",
+    "claude-skill"
+  ]
+}

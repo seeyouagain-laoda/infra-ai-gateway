@@ -1,0 +1,10 @@
+[Unit]
+Description=Mihomo Gemini (dedicated outbound)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/mihomo -d <HOME>/mihomo run -c <HOME>/mihomo/gemini-config.yaml
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,16 @@
+title: "Untranslated strings collection"
+labels: ["i18n"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share untranslated Antigravity UI strings here. Please include the exact English text and where it appears.
+  - type: textarea
+    id: strings
+    attributes:
+      label: Strings
+      placeholder: |
+        - English: Configure AI models and view your quota.
+          Location: Settings > Models
+          Suggested Chinese: 配置 AI 模型并查看你的额度。
+

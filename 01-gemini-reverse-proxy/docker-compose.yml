@@ -1,0 +1,22 @@
+# Gemini 网页端反代 · 容器部署
+# 将 <...> 占位符替换为你自己的实际值
+
+services:
+  gemini-web2api:
+    build: .
+    container_name: gemini-web2api
+    restart: unless-stopped
+    ports:
+      - "<PROXY_PORT>:8081"
+    environment:
+      - PORT=8081
+      - HOST=0.0.0.0
+      # 出网走宿主机上的专用出口代理实例（见 gemini-config.example.yaml）
+      - PROXY=http://host.docker.internal:<PROXY_OUT_PORT>
+      - DEFAULT_MODEL=gemini-3.5-flash
+      - GEMINI_BL=<BACKEND_VERSION>
+    volumes:
+      - ./gemini/config.json:/app/gemini/config.json:ro
+      - ./gemini/cookie.txt:/app/gemini/cookie.txt:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

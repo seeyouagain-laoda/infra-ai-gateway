@@ -1,0 +1,8 @@
+interface:
+  display_name: "Antigravity CN Pack"
+  short_description: "Apply and verify Antigravity Chinese localization"
+  brand_color: "#D9480F"
+  default_prompt: "Use $antigravity-cn-pack to apply and verify the Google Antigravity Chinese localization pack."
+
+policy:
+  allow_implicit_invocation: true

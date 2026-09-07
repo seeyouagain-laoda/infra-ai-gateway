@@ -1,0 +1,24 @@
+# 编译/缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 产物（不要提交打包出的 asar）
+*.asar
+*.asar.unpacked/
+app_test/
+agcnp_work/
+agcnp_new.asar
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 本地备份（含私人路径，勿上传）
+AntigravityCNBackup/
+*.bak-*/
+
+# liominsb 运行时产物（解包目录 / 临时 asar / 备份）
+liominsb/extracted/
+liominsb/app.asar.temp
+liominsb/app.asar.bak

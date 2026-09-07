@@ -1,0 +1,7 @@
+# 不要提交真实凭据
+gemini/cookie.txt
+gemini/config.json
+*.crt
+*.key
+.env
+.DS_Store

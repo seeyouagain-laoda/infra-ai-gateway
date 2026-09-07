@@ -1,0 +1,35 @@
+name: Missing translation
+description: Report English UI text that is still not translated
+title: "[missing translation] "
+labels: ["missing-translation", "i18n"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Antigravity CN Pack. Please do not include private account, project, token, or API key data.
+  - type: input
+    id: antigravity-version
+    attributes:
+      label: Antigravity version
+      placeholder: "Example: 2.0.1"
+    validations:
+      required: true
+  - type: textarea
+    id: english-text
+    attributes:
+      label: English text
+      description: Paste the exact untranslated text.
+      placeholder: "Example: Configure AI models and view your quota."
+    validations:
+      required: true
+  - type: textarea
+    id: suggested-chinese
+    attributes:
+      label: Suggested Chinese translation
+      placeholder: "Example: 配置 AI 模型并查看你的额度。"
+  - type: textarea
+    id: context
+    attributes:
+      label: Where did it appear?
+      placeholder: "Example: Settings > Models"
+

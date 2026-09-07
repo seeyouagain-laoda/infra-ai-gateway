@@ -1,0 +1,12 @@
+[Unit]
+Description=Gemini Web2API Proxy
+After=network.target
+
+[Service]
+WorkingDirectory=<DATA_VOLUME>/gemini-web2api/gemini
+ExecStart=<DATA_VOLUME>/gemini-web2api/venv/bin/python gemini_web2api.py
+Restart=on-failure
+Environment=PATH=<DATA_VOLUME>/gemini-web2api/venv/bin
+
+[Install]
+WantedBy=default.target

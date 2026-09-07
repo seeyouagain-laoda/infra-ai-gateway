@@ -1,0 +1,12 @@
+{
+  "port": "<PROXY_PORT>",
+  "host": "0.0.0.0",
+  "gemini_bl": "<BACKEND_VERSION>",
+  "auth_user": null,
+  "xsrf_token": "",
+  "api_keys": [],
+  "cookie_file": "cookie.txt",
+  "proxy": "http://127.0.0.1:<PROXY_OUT_PORT>",
+  "log_requests": true,
+  "default_model": "gemini-3.5-flash"
+}

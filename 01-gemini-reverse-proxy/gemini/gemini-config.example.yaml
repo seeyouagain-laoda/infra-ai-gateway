@@ -1,0 +1,46 @@
+# Gemini 专用出口代理实例（独立，隔离日常流量）
+# 将 <...> 占位符替换为你自己的实际值
+
+mixed-port: <PROXY_OUT_PORT>
+external-controller: 127.0.0.1:<PROXY_OUT_CTRL_PORT>
+secret: <PROXY_SECRET>
+allow-lan: false
+mode: rule
+log-level: info
+
+dns:
+  enable: true
+  enhanced-mode: redir-host      # 注意：fake-ip 无 TUN 会破坏隧道，用 redir-host
+  nameserver:
+    - 223.5.5.5
+    - 8.8.8.8
+
+proxy-providers:
+  gemini-out:
+    type: file
+    path: ./providers_gemini.yaml   # 你的订阅（只含目标地区节点）
+    health-check:
+      enable: true
+      url: https://gemini.google.com/app
+      interval: 7200
+
+proxy-groups:
+  - name: gemini-auto
+    type: url-test
+    use: [gemini-out]
+    filter: "<NODE_KEYWORD>"        # 只保留已验证可用的节点关键字
+    url: https://gemini.google.com/app
+    interval: 7200
+  - name: gemini-test
+    type: select
+    use: [gemini-out]
+  - name: gemini
+    type: select
+    proxies: [gemini-auto, gemini-test]
+
+rules:
+  - DOMAIN-SUFFIX,gemini.google.com,gemini
+  - DOMAIN-SUFFIX,google.com,gemini
+  - DOMAIN-SUFFIX,gstatic.com,gemini
+  - DOMAIN-SUFFIX,googleapis.com,gemini
+  - MATCH,DIRECT
