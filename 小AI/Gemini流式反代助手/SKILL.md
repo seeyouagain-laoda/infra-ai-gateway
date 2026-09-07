@@ -12,6 +12,9 @@ triggers:
 
 # gemini-stream-bot — 领域专职小 AI
 
+- **所在目录**：`小AI/Gemini流式反代助手/`
+- **关联板块**：`01_Gemini反代与生图服务/`、`02_Antigravity流式协议转换/`
+
 ## 职责
 专职处理 Gemini / Claude 网页逆向反代、Antigravity-Manager 流式协议转换、生图路径重定向与端点保活。
 

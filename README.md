@@ -1,4 +1,4 @@
-# infra-ai-gateway
+# AI 基础设施与反代网关
 
 > AI 基础设施与反代网关：Gemini / Claude 本地反代、Electron 永久汉化、桌面应用 AI 操控。
 
@@ -15,12 +15,12 @@
 ## 📂 目录结构
 
 ```
-infra-ai-gateway/
+AI 基础设施与反代网关/
 ├── README.md                          # 本文件：全局导航
 ├── LICENSE                            # MIT 开源协议
 ├── .gitignore                         # 统一忽略规则
 │
-├── 01-gemini-reverse-proxy/           # Gemini 网页端反代（对话/API化）
+├── 01_Gemini反代与生图服务/            # Gemini 网页端反代（对话/API化）
 │   ├── README.md                      # 部署指南（NAS Docker / systemd / nginx）
 │   ├── docker-compose.yml             # 容器编排
 │   ├── Dockerfile                     # 镜像构建
@@ -33,24 +33,30 @@ infra-ai-gateway/
 │       ├── gemini-web2api.service
 │       └── mihomo-gemini.service
 │
-├── 02-antigravity-manager/            # Antigravity-Manager 终极方案（OAuth 免 Cookie）
+├── 02_Antigravity流式协议转换/         # Antigravity-Manager 终极方案（OAuth 免 Cookie）
 │   └── README.md                      # 部署 + 三端接入 + 排障实录
 │
-├── 03-antigravity-hanhua/             # Antigravity 永久中文汉化
+├── 03_Antigravity永久汉化/             # Antigravity 永久中文汉化
 │   ├── README.md                      # 方案对比 + 操作指南
 │   ├── antigravity-cn-pack-skill/     # labixiaoxins 方案（Skill 包）
 │   ├── liominsb/                      # liominsb 方案（MutationObserver 引擎）
 │   ├── scripts/                       # 设置面板手术注入脚本
 │   └── tools/                         # CDP 扫描/校验/调度工具
 │
-├── 04-desktop-app-control/            # WorkBuddy 操控 Antigravity（MCP + CDP 双控）
+├── 04_桌面应用自动化联动/              # WorkBuddy 操控 Antigravity（MCP + CDP 双控）
 │   ├── README.md                      # 技术论文式总结
 │   ├── desktop-app-control-skill/     # Skill 包（SKILL.md + 脚本 + 参考文档）
 │   ├── docs/                          # 排障报告与备选方案
 │   └── scripts/                       # agy 驱动 + UI 操控 + 截图脚本
 │
-└── docs/
-    └── MIGRATION.md                   # 从旧仓库迁移说明
+├── 文档/
+│   └── 版本迁移指引.md                 # 从旧仓库迁移说明
+│
+└── 小AI/
+    ├── Gemini流式反代助手/
+    │   └── SKILL.md                   # 反代流式协议适配与运维专家
+    └── 桌面应用汉化助手/
+        └── SKILL.md                   # Electron asar 汉化与实机验证专家
 ```
 
 ---
@@ -61,10 +67,10 @@ infra-ai-gateway/
 
 | 原仓库 | 对应板块 | 状态 |
 | :--- | :--- | :---: |
-| [gemini-reverse-proxy-nas](https://github.com/seeyouagain-laoda/gemini-reverse-proxy-nas) | `01-gemini-reverse-proxy/` | 🔀 已迁移 |
-| [antigravity-manager-gemini-relay](https://github.com/seeyouagain-laoda/antigravity-manager-gemini-relay) | `02-antigravity-manager/` | 🔀 已迁移 |
-| [antigravity-hanhua](https://github.com/seeyouagain-laoda/antigravity-hanhua) | `03-antigravity-hanhua/` | 🔀 已迁移 |
-| [Agent-App-Perfect-Antigravity-WorkBuddy](https://github.com/seeyouagain-laoda/Agent-App-Perfect-Antigravity-WorkBuddy) | `04-desktop-app-control/` | 🔀 已迁移 |
+| [gemini-reverse-proxy-nas](https://github.com/seeyouagain-laoda/gemini-reverse-proxy-nas) | `01_Gemini反代与生图服务/` | 🔀 已迁移 |
+| [antigravity-manager-gemini-relay](https://github.com/seeyouagain-laoda/antigravity-manager-gemini-relay) | `02_Antigravity流式协议转换/` | 🔀 已迁移 |
+| [antigravity-hanhua](https://github.com/seeyouagain-laoda/antigravity-hanhua) | `03_Antigravity永久汉化/` | 🔀 已迁移 |
+| [Agent-App-Perfect-Antigravity-WorkBuddy](https://github.com/seeyouagain-laoda/Agent-App-Perfect-Antigravity-WorkBuddy) | `04_桌面应用自动化联动/` | 🔀 已迁移 |
 
 ---
 
@@ -81,19 +87,28 @@ docker run -d --name antigravity-manager \
   lbjlaq/antigravity-manager:latest
 ```
 
-详见 → [`02-antigravity-manager/README.md`](02-antigravity-manager/README.md)
+详见 → [`02_Antigravity流式协议转换/README.md`](02_Antigravity流式协议转换/README.md)
 
 ### 方案二：Gemini 网页端反代（旧方案，仅对话）
 
-详见 → [`01-gemini-reverse-proxy/README.md`](01-gemini-reverse-proxy/README.md)
+详见 → [`01_Gemini反代与生图服务/README.md`](01_Gemini反代与生图服务/README.md)
 
 ### 汉化 Antigravity
 
-详见 → [`03-antigravity-hanhua/README.md`](03-antigravity-hanhua/README.md)
+详见 → [`03_Antigravity永久汉化/README.md`](03_Antigravity永久汉化/README.md)
 
 ### 操控 Antigravity（MCP + CDP）
 
-详见 → [`04-desktop-app-control/README.md`](04-desktop-app-control/README.md)
+详见 → [`04_桌面应用自动化联动/README.md`](04_桌面应用自动化联动/README.md)
+
+---
+
+## 🤖 小 AI 助手
+
+| 小 AI | 目录 | 职责 |
+| :--- | :--- | :--- |
+| Gemini流式反代助手 | [`小AI/Gemini流式反代助手/`](小AI/Gemini流式反代助手/SKILL.md) | 反代流式协议适配、端点保活、生图路径重定向 |
+| 桌面应用汉化助手 | [`小AI/桌面应用汉化助手/`](小AI/桌面应用汉化助手/SKILL.md) | Electron asar 无头汉化、静态补丁与实机验证 |
 
 ---
 

@@ -11,6 +11,9 @@ triggers:
 
 # electron-asar-bot — 领域专职小 AI
 
+- **所在目录**：`小AI/桌面应用汉化助手/`
+- **关联板块**：`03_Antigravity永久汉化/`、`04_桌面应用自动化联动/`
+
 ## 职责
 专精 Electron 桌面应用（如 Google Antigravity）在无头环境下的 asar 解包、静态字符串替换、preload 注入与实机验证。
 
