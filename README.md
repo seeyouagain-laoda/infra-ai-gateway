@@ -1,6 +1,6 @@
 # AI 基础设施与反代网关
 
-> AI 基础设施与反代网关：Gemini / Claude 本地反代、Electron 永久汉化、桌面应用 AI 操控。
+> AI 基础设施与反代网关：Gemini / Claude 本地反代、Electron 永久汉化、桌面应用 AI 操控、OpenClaw 视觉能力。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -8,7 +8,7 @@
 
 ## 📌 一句话简介
 
-把 Google Gemini + Anthropic Claude 的免费配额反代成标准 OpenAI 兼容 API，跑在 NAS / 自建服务器上，供局域网内所有 AI 客户端（ChatBox / WorkBuddy / OpenClaw）统一调用。同时提供 Antigravity 桌面应用的永久中文汉化方案与 MCP + CDP 双控操控能力。
+把 Google Gemini + Anthropic Claude 的免费配额反代成标准 OpenAI 兼容 API，跑在 NAS / 自建服务器上，供局域网内所有 AI 客户端（ChatBox / WorkBuddy / OpenClaw）统一调用。同时提供 Antigravity 桌面应用的永久中文汉化方案、MCP + CDP 双控操控能力，以及 **OpenClaw Agent 的视觉能力（读图 / 画图）打通方案**。
 
 ---
 
@@ -49,6 +49,9 @@ AI 基础设施与反代网关/
 │   ├── docs/                          # 排障报告与备选方案
 │   └── scripts/                       # agy 驱动 + UI 操控 + 截图脚本
 │
+├── 05_OpenClaw视觉能力与双链路验证/    # 让 Agent 真正「看见」——读图 / 画图打通
+│   └── README.md                      # 视觉开关两处配置 + 干净测试三原则 + 12 条 FAQ
+│
 ├── 文档/
 │   └── 版本迁移指引.md                 # 从旧仓库迁移说明
 │
@@ -71,6 +74,12 @@ AI 基础设施与反代网关/
 | [antigravity-manager-gemini-relay](https://github.com/seeyouagain-laoda/antigravity-manager-gemini-relay) | `02_Antigravity流式协议转换/` | 🔀 已迁移 |
 | [antigravity-hanhua](https://github.com/seeyouagain-laoda/antigravity-hanhua) | `03_Antigravity永久汉化/` | 🔀 已迁移 |
 | [Agent-App-Perfect-Antigravity-WorkBuddy](https://github.com/seeyouagain-laoda/Agent-App-Perfect-Antigravity-WorkBuddy) | `04_桌面应用自动化联动/` | 🔀 已迁移 |
+
+### 🆕 新增板块（非迁移）
+
+| 板块 | 说明 | 独立仓库 |
+| :--- | :--- | :--- |
+| `05_OpenClaw视觉能力与双链路验证/` | 打通 Agent 的读图 / 画图能力，局域网 + Cloudflare 隧道双链路实测 | [openclaw-vision-dual-link-guide](https://github.com/seeyouagain-laoda/openclaw-vision-dual-link-guide) |
 
 ---
 
@@ -101,6 +110,29 @@ docker run -d --name antigravity-manager \
 
 详见 → [`04_桌面应用自动化联动/README.md`](04_桌面应用自动化联动/README.md)
 
+### 让 OpenClaw Agent 能读图 / 画图
+
+一句话：**模型的视觉能力要两处声明，缺一不可**。
+
+```jsonc
+// ~/.openclaw/openclaw.json
+{
+  "models": { "providers": { "antigravity": { "models": [
+    { "id": "gemini-3.8-flash-high", "input": ["text", "image"] }   // ← ① 声明模型会看图
+  ]}}},
+  "agents": { "defaults": { "imageModel": {                          // ← ② 指定读图用哪个模型
+    "primary": "antigravity/gemini-3.8-flash-high",
+    "fallbacks": ["antigravity/gemini-3.7-flash"]
+  }}}
+}
+```
+
+```bash
+systemctl --user restart openclaw-gateway.service && sleep 12
+```
+
+详见 → [`05_OpenClaw视觉能力与双链路验证/README.md`](05_OpenClaw视觉能力与双链路验证/README.md)
+
 ---
 
 ## 🤖 小 AI 助手
@@ -126,3 +158,4 @@ docker run -d --name antigravity-manager \
 - [Antigravity-Manager](https://github.com/lbjlaq/Antigravity-Manager) — OAuth 多账号池 + 三协议反代
 - [MetaCubeX/mihomo](https://github.com/MetaCubeX/mihomo) — Clash.Meta 分流内核
 - [gemini-browser-image-gen](https://github.com/seeyouagain-laoda/gemini-browser-image-gen) — 浏览器 CDP 生图（反代管对话，浏览器管生图）
+- [openclaw-vision-dual-link-guide](https://github.com/seeyouagain-laoda/openclaw-vision-dual-link-guide) — OpenClaw 视觉能力双链路实测（本仓库 05 板块的独立版）
